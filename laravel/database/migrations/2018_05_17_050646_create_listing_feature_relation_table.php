@@ -15,8 +15,8 @@ class CreateListingFeatureRelationTable extends Migration
     {
         Schema::create('listing_features', function (Blueprint $table) {
             $table->increments('id_listing_features');
-            $table->integer('id_features');
-            $table->integer('id_listing');
+            $table->unsignedInteger('id_features');
+            $table->unsignedInteger('id_listing');
             $table->char('active',1);
             $table->timestamps();
         });

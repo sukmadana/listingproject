@@ -15,7 +15,7 @@ class CreateListingFeatureTable extends Migration
     {
         Schema::create('features', function (Blueprint $table) {
             $table->increments('id_features');
-            $table->integer('id_listing_category');
+            $table->unsignedInteger('id_listing_category');
             $table->string('features_name',50);
             $table->string('features_icon',80);
             $table->timestamps();
