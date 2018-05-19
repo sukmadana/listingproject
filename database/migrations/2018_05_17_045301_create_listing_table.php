@@ -14,7 +14,7 @@ class CreateListingTable extends Migration
     public function up()
     {
         Schema::create('listings', function (Blueprint $table) {
-            $table->increments('id_listing');
+            $table->increments('id');
             $table->unsignedInteger('id_listing_category');
             $table->unsignedInteger('id_sales');
             $table->unsignedInteger('id_merchant');

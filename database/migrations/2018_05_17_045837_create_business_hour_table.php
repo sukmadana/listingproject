@@ -14,7 +14,7 @@ class CreateBusinessHourTable extends Migration
     public function up()
     {
         Schema::create('bussiness_hours', function (Blueprint $table) {
-            $table->increments('id_business_hour');
+            $table->increments('id');
             $table->unsignedInteger('id_listing');
             $table->string('day',20);
             $table->string('time_from',10);

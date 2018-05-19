@@ -14,7 +14,7 @@ class CreateVisaCategoryTable extends Migration
     public function up()
     {
         Schema::create('visa_category', function (Blueprint $table) {
-            $table->increments('id_visa_category');
+            $table->increments('id');
             $table->string('visa_category_name');
             $table->timestamps();
         });

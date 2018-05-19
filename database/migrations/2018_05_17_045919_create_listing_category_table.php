@@ -14,7 +14,7 @@ class CreateListingCategoryTable extends Migration
     public function up()
     {
         Schema::create('listing_category', function (Blueprint $table) {
-            $table->increments('id_listing_category');
+            $table->increments('id');
             $table->string('category_name',30);
             $table->string('category_icon',80);
             $table->text('category_description');

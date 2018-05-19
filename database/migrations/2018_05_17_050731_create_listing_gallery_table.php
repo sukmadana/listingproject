@@ -14,7 +14,7 @@ class CreateListingGalleryTable extends Migration
     public function up()
     {
         Schema::create('listing_galleries', function (Blueprint $table) {
-            $table->increments('id_listing_gallery');
+            $table->increments('id');
             $table->unsignedInteger('id_listing');
             $table->string('name');
             $table->text('foto_description');

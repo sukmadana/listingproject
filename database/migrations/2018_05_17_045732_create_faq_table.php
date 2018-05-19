@@ -14,7 +14,7 @@ class CreateFaqTable extends Migration
     public function up()
     {
         Schema::create('faqs', function (Blueprint $table) {
-            $table->increments('id_faq');
+            $table->increments('id');
             $table->unsignedInteger('id_listing');
             $table->string('faq_question',500);
             $table->text('faq_answer');

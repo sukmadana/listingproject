@@ -14,7 +14,7 @@ class CreateVisaTypesTable extends Migration
     public function up()
     {
         Schema::create('visa_types', function (Blueprint $table) {
-            $table->increments('id_visa_type');
+            $table->increments('id');
             $table->string('visa_type_name');
             $table->string('visa_type_description',350);
             $table->timestamps();
