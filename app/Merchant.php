@@ -4,22 +4,20 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Notifications\AdminResetPasswordNotification;
 
-class Admin extends Authenticatable
+class Merchant extends Authenticatable
 {
     use Notifiable;
 
 
-    protected $guard = 'admin';
-
+    protected $guard = 'merchant';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'first_name','last_name','position', 'email','username', 'password','active',
+        'username', 'email', 'password','company_name','first_name','last_name', 'address', 'active',
     ];
 
     /**
@@ -30,9 +28,4 @@ class Admin extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
-    public function sendPasswordResetNotification($token)
-    {
-        $this->notify(new AdminResetPasswordNotification($token));
-    }
 }

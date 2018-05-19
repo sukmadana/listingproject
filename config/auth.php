@@ -54,6 +54,15 @@ return [
             'driver' => 'token',
             'provider' => 'admins',
         ],
+        'merchant' => [
+            'driver' => 'session',
+            'provider' => 'merchants',
+        ],
+
+        'merchant-api' => [
+            'driver' => 'token',
+            'provider' => 'merchants',
+        ],
     ],
 
     /*
@@ -82,6 +91,10 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Admin::class,
+        ],
+        'merchants' => [
+            'driver' => 'eloquent',
+            'model' => App\Merchant::class,
         ],
 
         // 'users' => [
