@@ -39,4 +39,6 @@ Route::group(['prefix' => 'merchant'], function () {
     Route::get('/login', 'AuthMerchant\LoginController@showLoginForm')->name('merchant.login');
     Route::post('/login', 'AuthMerchant\LoginController@login')->name('merchant.login.submit');
     Route::get('/', 'MerchantController@index')->name('merchant.home');  //home
+    Route::post('/register','AuthMerchant\RegisterController@register')->name('merchant.register');
+    Route::get('/register','AuthMerchant\RegisterController@showRegistrationForm');
 });

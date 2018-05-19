@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\AuthMerchant;
 
-use App\User;
+use App\Merchant;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -20,6 +23,8 @@ class RegisterController extends Controller
     |
     */
 
+    //use RedirectsUsers;
+
     use RegistersUsers;
 
     /**
@@ -27,7 +32,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/merchant';
 
     /**
      * Create a new controller instance.
@@ -36,7 +41,17 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest:merchant');
+    }
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        return view('authMerchant.register');
     }
 
     /**
@@ -48,12 +63,30 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'username' => 'required|string|max:255|unique:merchants',
+            'email' => 'required|string|email|max:255|unique:merchants',
             'password' => 'required|string|min:6|confirmed',
+            'company_name' => 'required|string|max:255',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
             'address' => 'required|string|max:255',
-            'phone' => 'required|numeric',
         ]);
+    }
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+        Auth::guard('merchant')->login($user);
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());
     }
 
     /**
@@ -64,13 +97,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        return Merchant::create([
+            'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'company_name' => $data['company_name'],
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
             'address' => $data['address'],
-            'phone' => $data['phone'],
             'active' => 'y',
         ]);
     }
+
+    
 }
