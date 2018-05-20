@@ -21,9 +21,6 @@ class CreateFaqTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('faqs', function (Blueprint $table) {
-            $table->foreign('id_listing')->references('id')->on('listings')->onDelete('cascade');
-        });
     }
 
     /**

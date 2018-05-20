@@ -21,8 +21,7 @@ class CreateListingFeatureTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('features', function (Blueprint $table) {
-            $table->foreign('id_listing_category')->references('id')->on('listing_category')->onDelete('cascade');
+        Schema::table('features', function (Blueprint $kolom) {
         });
     }
 

@@ -24,9 +24,6 @@ class CreateListingGalleryTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('listing_galleries', function (Blueprint $table) {
-            $table->foreign('id_listing')->references('id')->on('listings')->onDelete('cascade');
-        });
     }
 
     /**

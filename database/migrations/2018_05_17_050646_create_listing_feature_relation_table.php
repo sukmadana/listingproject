@@ -21,13 +21,7 @@ class CreateListingFeatureRelationTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('listing_features', function (Blueprint $table) {
-            $table->foreign('id_features')->references('id')->on('features')->onDelete('cascade')->onUpdate('cascade');
-        });
 
-        Schema::table('listing_features', function (Blueprint $table) {
-            $table->foreign('id_listing')->references('id')->on('listings')->onDelete('cascade')->onUpdate('cascade');
-        });
     }
 
     /**

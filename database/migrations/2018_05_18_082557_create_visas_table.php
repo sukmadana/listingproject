@@ -36,13 +36,7 @@ class CreateVisasTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('visas', function (Blueprint $table) {
-            $table->foreign('id_visa_category')->references('id')->on('visa_category')->onDelete('cascade');
-        });
-
-        Schema::table('visas', function (Blueprint $table) {
-            $table->foreign('id_visa_type')->references('id')->on('visa_types')->onDelete('cascade');
-        });
+        
     }
 
     /**

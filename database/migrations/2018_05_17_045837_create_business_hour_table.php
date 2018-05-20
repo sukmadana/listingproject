@@ -23,9 +23,7 @@ class CreateBusinessHourTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('business_hour', function (Blueprint $table) {
-            $table->foreign('id_listing')->references('id')->on('listings')->onDelete('cascade');
-        });
+      
     }
 
     /**

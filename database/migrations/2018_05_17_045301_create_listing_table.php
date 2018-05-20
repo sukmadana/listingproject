@@ -45,14 +45,6 @@ class CreateListingTable extends Migration
             $table->string('listing_status',20);
             $table->timestamps();
         });
-
-        Schema::table('listings', function (Blueprint $table) {      
-            $table->foreign('id_listing_category')->references('id')->on('listing_category')->onDelete('cascade');
-        });
-
-        Schema::table('listings', function (Blueprint $table) {
-            $table->foreign('id_merchant')->references('id')->on('merchants')->onDelete('cascade');
-        });
     }
 
     /**
