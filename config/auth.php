@@ -130,6 +130,12 @@ return [
             'table' => 'password_resets',
             'expire' => 15,
         ],
+
+        'merchants' => [
+            'provider' => 'merchants',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
     ],
 
 ];

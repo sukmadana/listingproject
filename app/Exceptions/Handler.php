@@ -67,12 +67,12 @@ class Handler extends ExceptionHandler
                 $login = 'admin.login';
                 break;
 
-            case 'admin':
-                $login = 'admin.login';
+            case 'merchant':
+                $login = 'merchant.login';
                 break;
             
             default:
-                $login = 'merchant.login';
+                $login = 'login';
                 break;
         }
 

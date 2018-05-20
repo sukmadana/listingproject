@@ -28,7 +28,7 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin';
+    protected $redirectTo = '/merchant';
 
     /**
      * Create a new controller instance.
@@ -37,22 +37,22 @@ class ResetPasswordController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:admin');
+        $this->middleware('guest:merchant');
     }
 
     public function guard()
     {
-        return Auth::guard('admin');
+        return Auth::guard('merchant');
     }
 
     public function broker()
     {
-        return Password::broker('admins');
+        return Password::broker('merchants');
     }
 
     public function showResetForm(Request $request, $token = null)
     {
-        return view('authAdmin.passwords.reset')->with(
+        return view('authMerchant.passwords.reset')->with(
             ['token' => $token, 'email' => $request->email]
         );
     }

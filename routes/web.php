@@ -41,4 +41,10 @@ Route::group(['prefix' => 'merchant'], function () {
     Route::get('/', 'MerchantController@index')->name('merchant.home');  //home
     Route::post('/register','AuthMerchant\RegisterController@register')->name('merchant.register');
     Route::get('/register','AuthMerchant\RegisterController@showRegistrationForm');
+    Route::get('/logout', 'AuthMerchant\LoginController@logout')->name('merchant.logout');
+    Route::get('/password/reset', 'AuthMerchant\ForgotPasswordController@showLinkRequestForm')->name('merchant.password.request');
+    Route::post('/password/email', 'AuthMerchant\ForgotPasswordController@sendResetLinkEmail')->name('merchant.password.email');
+    Route::get('/password/reset/{token}', 'AuthMerchant\ResetPasswordController@showResetForm')->name('merchant.password.reset');
+    Route::post('/password/reset', 'AuthMerchant\ResetPasswordController@reset');
+    
 });

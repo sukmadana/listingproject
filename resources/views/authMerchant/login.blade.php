@@ -55,8 +55,11 @@
                                     Login
                                 </button>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                <a class="btn btn-link" href="{{ route('merchant.password.request') }}">
                                     Forgot Your Password?
+                                </a>
+                                <a class="btn btn-link" href="{{ url('/merchant/register') }}">
+                                    Register?
                                 </a>
                             </div>
                         </div>

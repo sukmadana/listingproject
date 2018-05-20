@@ -29,12 +29,12 @@ class ForgotPasswordController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:admin');
+        $this->middleware('guest:merchant');
     }
 
     public function broker()
     {
-        return Password::broker('admins');
+        return Password::broker('merchants');
     }
 
     /**
@@ -44,7 +44,7 @@ class ForgotPasswordController extends Controller
      */
     public function showLinkRequestForm()
     {
-        return view('authAdmin.passwords.email');
+        return view('authMerchant.passwords.email');
     }
 
     /**
