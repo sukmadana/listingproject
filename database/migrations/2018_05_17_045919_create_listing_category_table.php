@@ -16,8 +16,8 @@ class CreateListingCategoryTable extends Migration
         Schema::create('listing_category', function (Blueprint $table) {
             $table->increments('id');
             $table->string('category_name',30);
-            $table->string('category_icon',80);
-            $table->text('category_description');
+            $table->string('category_icon',80)->nullable();
+            $table->text('category_description')->nullable();
             $table->timestamps();
         });
     }

@@ -20,8 +20,8 @@ class CreateMerchantTable extends Migration
             $table->string('password');
             $table->string('company_name');
             $table->string('first_name');
-            $table->string('last_name');
-            $table->text('address');
+            $table->string('last_name')->nullable();
+            $table->text('address')->nullable();
             $table->rememberToken();
             $table->char('active',1);
             $table->timestamps();

@@ -15,35 +15,43 @@ class CreateListingTable extends Migration
     {
         Schema::create('listings', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('id_listing_category');
-            $table->unsignedInteger('id_sales');
-            $table->unsignedInteger('id_merchant');
+            $table->unsignedInteger('id_listing_category')->nullable();
+            $table->unsignedInteger('id_sales')->nullable();
+            $table->unsignedInteger('id_merchant')->nullable();
             $table->string('listing_slug');
             $table->string('listing_title');
             $table->string('listing_tagline');
             $table->string('city',50);
             $table->text('full_address');
-            $table->string('phone',15);
-            $table->string('website');
-            $table->char('accept_booking',1);
-            $table->char('accept_payment',1);
-            $table->string('good_for',300);
+            $table->string('phone',15)->nullable();
+            $table->string('website')->nullable();
+            $table->char('accept_booking',1)->nullable();
+            $table->char('accept_payment',1)->nullable();
+            $table->string('good_for',300)->nullable();
             $table->string('price_range');
             $table->float('price_from',10,2);
             $table->float('price_to',10,2);
-            $table->float('best_price',10,2);
-            $table->text('listing_description');
-            $table->string('facebook_link',350);
-            $table->string('instagram_link',350);
-            $table->string('linked_in_link',350);
-            $table->string('google_plus_link',350);
-            $table->string('youtube_link',350);
-            $table->string('tags',350);
-            $table->string('video_url',350);
+            $table->float('best_price',10,2)->nullable();
+            $table->text('listing_description')->nullable();
+            $table->string('facebook_link',350)->nullable();
+            $table->string('instagram_link',350)->nullable();
+            $table->string('linked_in_link',350)->nullable();
+            $table->string('google_plus_link',350)->nullable();
+            $table->string('youtube_link',350)->nullable();
+            $table->string('tags',350)->nullable();
+            $table->string('video_url',350)->nullable();
             $table->string('image_feature',350);
             $table->char('allow_gallery',1);
             $table->string('listing_status',20);
             $table->timestamps();
+        });
+
+        Schema::table('listings', function (Blueprint $table) {      
+            $table->foreign('id_listing_category')->references('id')->on('listing_category')->onDelete('cascade');
+        });
+
+        Schema::table('listings', function (Blueprint $table) {
+            $table->foreign('id_merchant')->references('id')->on('merchants')->onDelete('cascade');
         });
     }
 

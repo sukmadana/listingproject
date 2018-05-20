@@ -15,10 +15,18 @@ class CreateListingFeatureRelationTable extends Migration
     {
         Schema::create('listing_features', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('id_features');
-            $table->unsignedInteger('id_listing');
+            $table->unsignedInteger('id_features')->nullable();
+            $table->unsignedInteger('id_listing')->nullable();
             $table->char('active',1);
             $table->timestamps();
+        });
+
+        Schema::table('listing_features', function (Blueprint $table) {
+            $table->foreign('id_features')->references('id')->on('features')->onDelete('cascade')->onUpdate('cascade');
+        });
+
+        Schema::table('listing_features', function (Blueprint $table) {
+            $table->foreign('id_listing')->references('id')->on('listings')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

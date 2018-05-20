@@ -15,25 +15,33 @@ class CreateVisasTable extends Migration
     {
         Schema::create('visas', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('id_visa_category');
-            $table->unsignedInteger('id_visa_type');
+            $table->unsignedInteger('id_visa_category')->nullable();
+            $table->unsignedInteger('id_visa_type')->nullable();
             $table->string('full_name');
             $table->text('bali_address');
             $table->string('phone',15);
             $table->string('email');
-            $table->text('address_from');
-            $table->text('emergency_cp');
-            $table->dateTime('travel_date');
-            $table->string('apply_state',300);
-            $table->text('purpose_to_visit');
-            $table->char('true_data',1);
-            $table->string('whatsapp_no',15);
-            $table->dateTime('leave_date');
-            $table->string('passport_file_name',500);
-            $table->string('bank_statement_file_name',500);
+            $table->text('address_from')->nullable();
+            $table->text('emergency_cp')->nullable();
+            $table->dateTime('travel_date')->nullable();
+            $table->string('apply_state',300)->nullable();
+            $table->text('purpose_to_visit')->nullable();
+            $table->char('true_data',1)->nullable();
+            $table->string('whatsapp_no',15)->nullable();
+            $table->dateTime('leave_date')->nullable();
+            $table->string('passport_file_name',500)->nullable();
+            $table->string('bank_statement_file_name',500)->nullable();
             $table->string('visa_status',20);
             $table->softDeletes();
             $table->timestamps();
+        });
+
+        Schema::table('visas', function (Blueprint $table) {
+            $table->foreign('id_visa_category')->references('id')->on('visa_category')->onDelete('cascade');
+        });
+
+        Schema::table('visas', function (Blueprint $table) {
+            $table->foreign('id_visa_type')->references('id')->on('visa_types')->onDelete('cascade');
         });
     }
 

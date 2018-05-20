@@ -15,13 +15,17 @@ class CreateListingGalleryTable extends Migration
     {
         Schema::create('listing_galleries', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('id_listing');
-            $table->string('name');
-            $table->text('foto_description');
+            $table->unsignedInteger('id_listing')->nullable();
+            $table->string('name')->nullable();
+            $table->text('foto_description')->nullable();
             $table->string('img_name',400);
-            $table->string('img_alt',400);
+            $table->string('img_alt',400)->nullable();
             $table->string('img_url',500);
             $table->timestamps();
+        });
+
+        Schema::table('listing_galleries', function (Blueprint $table) {
+            $table->foreign('id_listing')->references('id')->on('listings')->onDelete('cascade');
         });
     }
 
