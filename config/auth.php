@@ -85,16 +85,16 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Model\User::class,
         ],
 
         'admins' => [
             'driver' => 'eloquent',
-            'model' => App\Admin::class,
+            'model' => App\Model\Admin::class,
         ],
         'merchants' => [
             'driver' => 'eloquent',
-            'model' => App\Merchant::class,
+            'model' => App\Model\Merchant::class,
         ],
 
         // 'users' => [

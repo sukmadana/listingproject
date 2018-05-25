@@ -14,6 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+//API LISTING: 
+Route::resource('listings','ListingController');
+Route::resource('listing-category', 'ListingCategoryController');
+
 
 Auth::routes();
 
