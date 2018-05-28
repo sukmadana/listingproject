@@ -34,9 +34,11 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{asset('assets/admin/css/themes/all-themes.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
 </head>
 
-<body class="theme-red" id="app">
+<body class="theme-red" >
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
@@ -69,7 +71,7 @@
     </div>
     <!-- #END# Search Bar -->
     <!-- Top Bar -->
-    <nav class="navbar">
+    <nav class="navbar navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
@@ -337,7 +339,7 @@
                                 <a href="pages/ui/animations.html">Sales Log</a>
                             </li>
                             <li>
-                                <a href="pages/ui/badges.html">Sales Category</a>
+                                <a href="{{ route('admin.sales.category') }}">Sales Category</a>
                             </li>
                         </ul>
                     </li>
@@ -639,27 +641,31 @@
         </aside>
         <!-- #END# Right Sidebar -->
     </section>
-
-    <section class="content">
+    <section class="content" >
         <div class="container-fluid">
                 <div class="block-header">
                     <h2>@yield('header')</h2>
                 </div>
+                
             @yield('content')
         </div>
     </section>
-
+    
+    
+    
     <!-- Jquery Core Js -->
     <script src="{{ asset('assets/admin/plugins/jquery/jquery.min.js') }}"></script>
 
     <!-- Bootstrap Core Js -->
     <script src="{{ asset('assets/admin/plugins/bootstrap/js/bootstrap.js') }}"></script>
+    
 
     <!-- Select Plugin Js -->
     <script src="{{ asset('assets/admin/plugins/bootstrap-select/js/bootstrap-select.js') }}"></script>
 
     <!-- Slimscroll Plugin Js -->
     <script src="{{ asset('assets/admin/plugins/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
+    
 
     <!-- Waves Effect Plugin Js -->
     <script src="{{ asset('assets/admin/plugins/node-waves/waves.js') }}"></script>
@@ -673,7 +679,7 @@
 
     <!-- ChartJs -->
     <script src="{{ asset('assets/admin/plugins/chartjs/Chart.bundle.js') }}"></script>
-
+    
     <!-- Flot Charts Plugin Js -->
     <script src="{{ asset('assets/admin/plugins/flot-charts/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/plugins/flot-charts/jquery.flot.resize.js') }}"></script>
@@ -685,11 +691,21 @@
     <script src="{{ asset('assets/admin/plugins/jquery-sparkline/jquery.sparkline.js') }}"></script>
 
     <!-- Custom Js -->
+    
     <script src="{{ asset('assets/admin/js/admin.js') }}"></script>
     <script src="{{ asset('assets/admin/js/pages/index.js') }}"></script>
-
+    <script src="{{ asset('assets/admin/js/pages/forms/form-validation.js')}}"></script>
+    
     <!-- Demo Js -->
     <script src="{{ asset('assets/admin/js/demo.js') }}"></script>
+    
+
+    <script>
+        window.Laravel = <?php echo json_encode([
+            'csrfToken' => csrf_token(),
+                 ]); ?> 
+    </script>
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 
 </html>

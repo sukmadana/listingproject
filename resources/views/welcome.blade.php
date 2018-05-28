@@ -63,6 +63,7 @@
                 margin-bottom: 30px;
             }
         </style>
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -78,18 +79,17 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
+                <div id="app">
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
             </div>
+            <script>
+                window.Laravel = <?php echo json_encode([
+                    'csrfToken' => csrf_token(),
+                         ]); ?> 
+            </script>
+            <script src="{{asset('js/app.js')}}"></script>
+            
         </div>
     </body>
 </html>
