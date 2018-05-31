@@ -33,6 +33,6 @@ class CreateBusinessHourTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bussiness_hours');
+        Schema::dropIfExists('business_hours');
     }
 }

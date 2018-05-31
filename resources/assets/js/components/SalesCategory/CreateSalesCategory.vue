@@ -4,7 +4,7 @@
             <h2>ADD NEW</h2>
         </div>
         <div class="body">
-            <form id="form_advanced_validation" v-on:submit.prevent="addSalesCategory()" novalidate="novalidate">
+            <form id="form_advanced_validation" v-on:submit.prevent="addSalesCategory()" >
                 <div class="form-group form-float">
                     <div class="form-line error">
                         <input type="text" class="form-control" v-model="sales_category.sales_category_name" maxlength="190" required="" aria-required="true" aria-invalid="true">

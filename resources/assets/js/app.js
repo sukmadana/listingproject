@@ -17,9 +17,14 @@ import VueAxios from 'vue-axios';
 import axios from 'axios';
 Vue.use(VueAxios, axios);
 
+import VueSweetalert2 from 'vue-sweetalert2';
+Vue.use(VueSweetalert2);
+
+
 import App from './App.vue';
 import SalesCategory from './components/SalesCategory/ShowSalesCategory.vue';
 import CreateSalesCategory from './components/SalesCategory/CreateSalesCategory.vue';
+import EditSalesCategory from './components/SalesCategory/EditSalesCategory.vue';
 
 const routes = [
   {
@@ -32,7 +37,12 @@ const routes = [
       path: '/admin/sales/category',
       component: SalesCategory
   },
-  
+  {
+    name: 'EditSalesCategory',
+    path: '/admin/sales/category/edit/:id',
+    component: EditSalesCategory
+},
+
 ];
 
 const router = new VueRouter({ mode: 'history', routes: routes});

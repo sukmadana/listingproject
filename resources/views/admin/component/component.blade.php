@@ -695,6 +695,7 @@
     <script src="{{ asset('assets/admin/js/admin.js') }}"></script>
     <script src="{{ asset('assets/admin/js/pages/index.js') }}"></script>
     <script src="{{ asset('assets/admin/js/pages/forms/form-validation.js')}}"></script>
+    <script src="{{ asset('assets/admin/js/pages/ui/dialogs.js')}}"></script>
     
     <!-- Demo Js -->
     <script src="{{ asset('assets/admin/js/demo.js') }}"></script>

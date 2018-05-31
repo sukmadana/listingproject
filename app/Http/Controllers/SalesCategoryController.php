@@ -41,9 +41,7 @@ class SalesCategoryController extends Controller
     public function edit($id)
     {
         $sales_category = SalesCategory::find($id);
-        return response()->json([
-            'sales_category' =>$sales_category
-        ]);
+        return response()->json($sales_category);
     }
 
     public function update(Request $request, $id)

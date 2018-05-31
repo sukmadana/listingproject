@@ -15,7 +15,7 @@ class CreateSalesCategoryTable extends Migration
     {
         Schema::create('sales_category', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('genre');
+            $table->string('sales_category_name');
             $table->float('commition',10,2);
             $table->float('salary',10,2);
             $table->timestamps();

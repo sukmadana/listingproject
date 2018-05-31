@@ -38,6 +38,7 @@ Route::group(['prefix' => 'admin'], function() {
 
     Route::get('/sales/category','AdminController@showSalesCategory')->name('admin.sales.category');
     Route::get('/sales/category/create','AdminController@showSalesCategory');
+    Route::get('/sales/category/edit/{id}','AdminController@showSalesCategory');
     Route::resource('/api/sales-category','SalesCategoryController');
     
 });

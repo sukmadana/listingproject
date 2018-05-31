@@ -16,6 +16,7 @@ class CreateSalesTable extends Migration
         Schema::create('sales', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('id_sales_category');
+            $table->string('id_sales',20)->unique();
             $table->string('nik',20)->unique();
             $table->string('no_kk',20);
             $table->string('nama');
@@ -33,7 +34,7 @@ class CreateSalesTable extends Migration
             $table->string('agama');
             $table->string('pekerjaan');
             $table->string('phone',15);
-            $table->string('alt_phone',15);
+            $table->string('alt_phone',15)->nullable();
             $table->string('file_ktp',500);
             $table->string('status',20);
             $table->timestamps();

@@ -17,9 +17,10 @@
     "laravel-mix": "^1.0",
     "lodash": "^4.17.4",
     "vue": "^2.1.10",
-    "vue-loader": "^14.2.2",
     "vue-axios": "^2.1.1",
+    "vue-loader": "^14.2.2",
     "vue-router": "^3.0.1",
+    "vue-sweetalert2": "^1.2.4",
     "vue-template-compiler": "^2.5.16"
   },
   "dependencies": {
