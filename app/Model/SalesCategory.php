@@ -11,4 +11,9 @@ class SalesCategory extends Model
     protected $fillable = [
         'sales_category_name', 'commition', 'salary',
     ];
+
+    public function sales()
+    {
+        return $this->hasMany('App\Model\Sales');
+    }
 }

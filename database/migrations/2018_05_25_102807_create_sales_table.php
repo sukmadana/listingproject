@@ -15,28 +15,28 @@ class CreateSalesTable extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('id_sales_category');
-            $table->string('id_sales',20)->unique();
-            $table->string('nik',20)->unique();
-            $table->string('no_kk',20);
+            $table->unsignedInteger('id_sales_category')->nullable();
+            $table->string('id_sales',20)->nullable();
+            $table->string('nik',20)->nullable();
+            $table->string('no_kk',20)->nullable();
             $table->string('nama');
-            $table->string('tempat_lahir');
-            $table->date('tgl_lahir');
-            $table->string('genre',20);
-            $table->string('alamat',400);
-            $table->string('alamat_tinggal',500);
-            $table->string('rt_rw',50);
-            $table->string('kel_desa',50);
-            $table->string('kecamatan',100);
-            $table->string('kabupaten',100);
-            $table->string('propinsi',100);
-            $table->string('negara',100);
-            $table->string('agama');
-            $table->string('pekerjaan');
-            $table->string('phone',15);
+            $table->string('tempat_lahir')->nullable();
+            $table->date('tgl_lahir')->nullable();
+            $table->string('gender',20)->nullable();
+            $table->string('alamat',400)->nullable();
+            $table->string('alamat_tinggal',500)->nullable();
+            $table->string('rt_rw',50)->nullable();
+            $table->string('kel_desa',50)->nullable();
+            $table->string('kecamatan',100)->nullable();
+            $table->string('kabupaten',100)->nullable();
+            $table->string('propinsi',100)->nullable();
+            $table->string('negara',100)->nullable();
+            $table->string('agama')->nullable();
+            $table->string('pekerjaan')->nullable();
+            $table->string('phone',15)->nullable();
             $table->string('alt_phone',15)->nullable();
-            $table->string('file_ktp',500);
-            $table->string('status',20);
+            $table->string('file',500)->nullable();
+            $table->char('status',1);
             $table->timestamps();
         });
     }

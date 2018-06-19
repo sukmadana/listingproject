@@ -32,11 +32,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="category in categories.sales_category">
+                    <tr v-for="category in categories.sales_category" :key="category.id">
                         <th scope="row">{{ no++ }}</th>
                         <td>{{ category.sales_category_name }}</td>
                         <td>{{category.commition}}</td>
-                        <td>{{ category.salary }}</td>
+                        <td>Rp.{{ category.salary.toLocaleString('en-US') }} </td>
                         <td>
                             <router-link :to="{name: 'EditSalesCategory', params: { id: category.id }}" class="btn btn-primary">Edit</router-link> 
                             <button class="btn btn-danger waves-effect " v-on:click="confirmDelete(category.id)" >Delete</button>
@@ -64,7 +64,7 @@
 
         methods:{
             fetchCategory(){
-                let uri = '/admin/api/sales-category';
+                let uri = '/api/admin/sales-category';
                 this.axios.get(uri).then((response) => {
                   this.categories = response.data;
               });
@@ -82,7 +82,7 @@
                 showLoaderOnConfirm: true
                 }).then((result) => {
                     if(result.value) {
-                        let uri = `/admin/api/sales-category/${id}`;
+                        let uri = `/api/admin/sales-category/${id}`;
                         this.axios.delete(uri).then((response) =>{
                             this.message = response.data;
                             this.$swal('Deleted', this.message.message, 'success')

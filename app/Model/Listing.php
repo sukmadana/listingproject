@@ -13,7 +13,8 @@ class Listing extends Model
      */
     protected $fillable = [
         'id_listing_category',
-        'id_sales','id_merchant',
+        'id_sales',
+        'id_merchant',
         'listing_slug',
         'listing_title',
         'listing_tagline',
@@ -21,23 +22,25 @@ class Listing extends Model
         'full_address',
         'phone',
         'website',
-        'accept_booking',
-        'accept_payment',
         'good_for',
-        'price_range',
-        'price_from',
-        'price_to',
-        'best_price',
+        'price',
         'listing_description',
         'facebook_link',
         'instagram_link',
         'linked_in_link',
         'google_plus_link',
         'youtube_link',
-        'tags',
         'video_url',
         'image_feature',
         'allow_gallery',
         'listing_status',
+        'lat',
+        'lng',
+        'range',
     ];
+
+    public function sales()
+    {
+        return $this->belongsTo('App\Model\Sales','id_sales','id_sales');
+    }
 }

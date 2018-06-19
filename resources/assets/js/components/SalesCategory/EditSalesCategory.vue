@@ -50,13 +50,13 @@
         },
         methods:{
             getSalesCategory(){
-                let uri = `/admin/api/sales-category/${this.$route.params.id}/edit`;
+                let uri = `/api/admin/sales-category/${this.$route.params.id}/edit`;
                 this.axios.get(uri).then((response) => {
                     this.sales_category = response.data;
                 });
             },
             updateSalesCategory(){
-                let uri = '/admin/api/sales-category/'+this.$route.params.id;
+                let uri = '/api/admin/sales-category/'+this.$route.params.id;
                 this.axios.patch(uri, this.sales_category).then((response) => {
                   this.$router.push({name: 'SalesCategory'});
                 });

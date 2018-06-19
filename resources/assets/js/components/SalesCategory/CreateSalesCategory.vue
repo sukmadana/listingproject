@@ -49,7 +49,7 @@
         },
         methods:{
             addSalesCategory(){
-                let uri = '/admin/api/sales-category';
+                let uri = '/api/admin/sales-category';
                 this.axios.post(uri, this.sales_category).then((response) => {
                 this.$router.push({name: 'SalesCategory'})
                 })

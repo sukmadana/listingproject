@@ -7,13 +7,11 @@ use Illuminate\Http\Request;
 
 class ListingCategoryController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $search = $request->search;
-        $listing_category = ListingCategory::where("category_name","LIKE","%$search%")->paginate(10);
-        return response()->json([
-            'listing_category' => $listing_category
-        ]);
+        
+        $listing_category = ListingCategory::paginate(5);
+        return response()->json($listing_category);
     }
 
     public function store(Request $request)
@@ -38,13 +36,16 @@ class ListingCategoryController extends Controller
     public function edit($id)
     {
         $listing_category = ListingCategory::find($id);
-        return response()->json([
-            'listing_category' => $listing_category
-        ]);
+        return response()->json($listing_category);
     }
 
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'category_name' => 'required|max:30',
+            'category_icon' => 'required|max:80',
+        ]);
+
         $listing_category = ListingCategory::find($id);
         $listing_category->update($request->all());
         return response()->json([

@@ -11,4 +11,9 @@ class ListingCategory extends Model
     protected $fillable = [
         'category_name', 'category_icon', 'category_description',
     ];
+
+    public function features()
+    {
+        return $this->hasMany('App\Model\Feature');
+    }
 }

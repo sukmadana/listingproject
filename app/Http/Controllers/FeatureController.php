@@ -9,10 +9,8 @@ class FeatureController extends Controller
 {
     public function index()
     {
-        $feature = Feature::all();
-        return response()->json([
-            'feature' => $feature
-        ]);
+        $feature = Feature::with('listing_category')->paginate(5);
+        return response()->json($feature);
     }
 
     public function fromCategory(Request $request)
@@ -47,9 +45,7 @@ class FeatureController extends Controller
     public function edit($id)
     {
         $feature = Feature::find($id);
-        return response()->json([
-            'feature' => $feature
-        ]);
+        return response()->json($feature);
     }
 
     public function update(Request $request, $id)

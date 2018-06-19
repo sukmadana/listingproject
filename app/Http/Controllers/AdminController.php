@@ -26,7 +26,33 @@ class AdminController extends Controller
         return view('admin.dashboard');
     }
 
-    public function showSalesCategory(){
+    public function showSalesCategory()
+    {
         return view('admin.sales.category');
+    }
+
+    public function showListingCategory()
+    {
+        return view('admin.listing.category');
+    }
+
+    public function showFeature()
+    {
+        return view('admin.listing.feature');
+    }
+
+    public function showSales()
+    {
+        return view('admin.sales.list');
+    }
+
+    public function showNewListing()
+    {
+        return view('admin.listing.new');
+    }
+
+    public function showListing()
+    {
+        return view('admin.listing.list');
     }
 }

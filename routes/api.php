@@ -17,4 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
+Route::resource('/admin/sales-category','SalesCategoryController');
+Route::resource('/admin/listing-category','ListingCategoryController');
+Route::resource('/admin/all-feature','FeatureController');
+Route::resource('/admin/data-sales','SalesController');

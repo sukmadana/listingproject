@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\AuthMerchant;
 
-use App\Merchant;
+use App\Model\Merchant;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;

@@ -36,11 +36,32 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('/password/reset/{token}', 'AuthAdmin\ResetPasswordController@showResetForm')->name('admin.password.reset');
     Route::post('/password/reset', 'AuthAdmin\ResetPasswordController@reset');
 
+    //SALES CATEGORY ROUTING
     Route::get('/sales/category','AdminController@showSalesCategory')->name('admin.sales.category');
     Route::get('/sales/category/create','AdminController@showSalesCategory');
     Route::get('/sales/category/edit/{id}','AdminController@showSalesCategory');
-    Route::resource('/api/sales-category','SalesCategoryController');
+
+    //SALES LIST
+    Route::get('/sales/all','SalesController@index')->name('admin.sales');
+    Route::get('/sales/create','AdminController@showSales');
+    Route::get('/sales/edit/{id}','AdminController@showSales');
+    Route::get('/sales/view/{id}','AdminController@showSales');
     
+    //LISTING CATEGORY ROUTING
+    Route::get('/listing/category','AdminController@showListingCategory')->name('admin.listing.category');
+    Route::get('/listing/category/create','AdminController@showListingCategory');
+    Route::get('/listing/category/edit/{id}','AdminController@showListingCategory');
+
+    //FEATURES
+    Route::get('/listing/feature','AdminController@showFeature')->name('admin.listing.feature');
+    Route::get('/listing/feature/create','AdminController@showFeature');
+    Route::get('/listing/feature/edit/{id}','AdminController@showFeature');
+    
+    //NEW LISTING
+    Route::get('/listing/new','AdminController@showNewListing')->name('admin.new.listing');
+
+    //LISTING
+    Route::get('/listing','AdminController@showNewListing')->name('admin.listing.list');
 });
 
 

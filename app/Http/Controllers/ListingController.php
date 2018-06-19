@@ -49,9 +49,11 @@ class ListingController extends Controller
             'linked_in_link' => 'max:350',
             'google_plus_link' => 'max:350',
             'youtube_link' => 'max:350',
-            'tags' => 'max:500',
             'video_url' => 'max:350',
             'image_feature' => 'max:350',
+            'lat' => 'required',
+            'lng' => 'required',
+            'range' => 'required',
         ]);
 
         $listing = Listing::create([
@@ -65,12 +67,7 @@ class ListingController extends Controller
             'full_address'          => $request->input('full_address'),
             'phone'                 => $request->input('phone'),
             'website'               => $request->input('website'),
-            'accept_booking'        => $request->input('accept_booking'),
-            'accept_payment'        => $request->input('accept_payment'),
             'good_for'              => $request->input('good_for'),
-            'price_range'           => $request->input('price_range'),
-            'price_from'            => $request->input('price_from'),
-            'price_to'              => $request->input('price_to'),
             'best_price'            => $request->input('best_price'),
             'listing_description'   => $request->input('listing_description'),
             'facebook_link'         => $request->input('facebook_link'),
@@ -78,11 +75,13 @@ class ListingController extends Controller
             'linked_in_link'        => $request->input('linked_in_link'),
             'google_plus_link'      => $request->input('google_plus_link'),
             'youtube_link'          => $request->input('youtube_link'),
-            'tags'                  => $request->input('tags'),
             'video_url'             => $request->input('video_url'),
             'image_feature'         => $request->input('image_fitur'),
             'allow_gallery'         => $request->input('allow_gallery'),
             'listing_status'        => 'new',
+            'lat'           => $request->input('lat'),
+            'lng'            => $request->input('lng'),
+            'range'              => $request->input('range'),
         ]);
 
         return response()->json([
@@ -111,9 +110,7 @@ class ListingController extends Controller
     public function edit($id)
     {
         $listing = Listing::find($id);
-        return response()->json([
-            'listing' => $listing
-        ]);
+        return response()->json($listing);
     }
 
     public function update(Request $request, $id)
@@ -132,9 +129,11 @@ class ListingController extends Controller
             'linked_in_link' => 'max:350',
             'google_plus_link' => 'max:350',
             'youtube_link' => 'max:350',
-            'tags' => 'max:500',
             'video_url' => 'max:350',
             'image_feature' => 'max:350',
+            'lat' => 'required',
+            'lng' => 'required',
+            'range' => 'required',
         ]);
 
         $listing = Listing::find($id);
